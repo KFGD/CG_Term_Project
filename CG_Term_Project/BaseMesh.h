@@ -7,6 +7,7 @@ class BaseMesh
 {
 public:
 	virtual void AttachMesh() = 0;
+	virtual BaseMesh* Clone() const = 0;
 
 protected:
 	GAMEOBJECT_TYPE mMeshType;
@@ -14,6 +15,7 @@ protected:
 public:
 	BaseMesh(GAMEOBJECT_TYPE type);
 	BaseMesh(const BaseMesh& copyMesh);
+	BaseMesh& operator=(const BaseMesh& copyMesh);
 	virtual ~BaseMesh();
 };
 

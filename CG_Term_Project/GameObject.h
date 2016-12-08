@@ -28,13 +28,19 @@ private:
 
 public:
 	CGameObject();
+	CGameObject(const CGameObject& copyObject);
+	CGameObject& operator=(const CGameObject& rhs);
+	virtual CGameObject* Clone() const;
 	~CGameObject();
 };
 
 template <typename T, typename = typename std::enable_if<std::is_base_of<BaseMesh, T>::value, T>::type>
 inline void CGameObject::InitMesh(const T & mesh)
 {
-	std::cout << typeid(T).name() << std::endl;
-	if (mMesh) delete mMesh;
-	mMesh = new T(mesh);
+
+	//std::cout << typeid(T).name() << std::endl;
+	if (mMesh) 
+		delete mMesh;
+	this->mMesh = new T(mesh);
+	//std::cout << "InitMesh 호출 완료" << std::endl;
 }

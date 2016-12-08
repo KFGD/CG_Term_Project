@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "Utility.h"
 
 class CMaterial
@@ -16,6 +17,8 @@ private:
 public:
 	CMaterial();
 	CMaterial(const CMaterial& copyMaterial);
+	CMaterial& operator=(const CMaterial& rhs);
+	CMaterial* Clone();
 	~CMaterial();
 };
 

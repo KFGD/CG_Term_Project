@@ -16,9 +16,10 @@ void reshape(int w, int h) {
 
 void script() {
 	CGameObject object;
-	CSphereMesh sphereMesh(100, 100, 100);
+	CSphereMesh sphereMesh(1.0f, 100, 100);
 	object.InitMesh(sphereMesh);
 	app.InputGameObject(object);
+	std::cout << "script 호출 완료" << std::endl;
 }
 
 int main(int argc, char** argv) {

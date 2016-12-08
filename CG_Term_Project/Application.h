@@ -9,10 +9,14 @@ public:
 	~CApplication();
 
 public:
-	void InputGameObject(CGameObject gameObject);
+	void InputGameObject(const CGameObject& gameObject);
 
 private:
-	std::vector<CGameObject> mGameObjects;
+	//Scene
+	std::vector<CGameObject*> mGameObjects;
+	
+private:
+	void ClearScene();
 
 public:
 	void RenderScene();
