@@ -1,6 +1,7 @@
 #pragma once
 #include "Application.h"
 #include "SphereMesh.h"
+#include "QuadMesh.h"
 #include "Main.h"
 
 CApplication app;
@@ -18,8 +19,13 @@ void script() {
 	CGameObject object;
 	CSphereMesh sphereMesh(1.0f, 100, 100);
 	object.InitMesh(sphereMesh);
-	app.InputGameObject(object);
-	std::cout << "script 호출 완료" << std::endl;
+	app.InitGameObject(object);
+
+	CQuadMesh quadMesh;
+	object.SetPosition(Vertex3(2.0f, 2.0f, 0.0f));
+	object.SetRotation(Vertex3(70.0f, 0.0f, 0.0f));
+	object.InitMesh(quadMesh);
+	app.InitGameObject(object);
 }
 
 int main(int argc, char** argv) {

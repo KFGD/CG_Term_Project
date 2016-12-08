@@ -20,5 +20,6 @@ struct Vertex4 {
 };
 
 enum GAMEOBJECT_TYPE {
+	QUAD,
 	SPHERE,
 };

@@ -9,7 +9,7 @@ public:
 	~CApplication();
 
 public:
-	void InputGameObject(const CGameObject& gameObject);
+	void InitGameObject(const CGameObject& gameObject);
 
 private:
 	//Scene

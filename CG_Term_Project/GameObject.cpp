@@ -7,6 +7,11 @@ void CGameObject::InitMaterial(const CMaterial & material)
 	this->mMaterial = new CMaterial(material);
 }
 
+void CGameObject::SetMesh(BaseMesh * mesh)
+{
+	this->mMesh = mesh;
+}
+
 void CGameObject::RenderObject()
 {
 	glPushMatrix();
@@ -29,6 +34,16 @@ void CGameObject::RenderObject()
 	if (mMesh) mMesh->AttachMesh();
 	
 	glPopMatrix();
+}
+
+void CGameObject::SetPosition(const Vertex3 & position)
+{
+	this->mPosition = position;
+}
+
+void CGameObject::SetRotation(const Vertex3 & rotation)
+{
+	this->mRotation = rotation;
 }
 
 
