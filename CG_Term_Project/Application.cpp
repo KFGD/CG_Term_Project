@@ -48,5 +48,5 @@ void CApplication::Reshape(int w, int h)
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45, ratio, 10, 100);
+	gluPerspective(45.0f, ratio, 10, 100);
 }

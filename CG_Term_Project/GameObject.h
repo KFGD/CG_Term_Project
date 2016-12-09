@@ -24,6 +24,7 @@ public:
 	void RenderObject();
 	void SetPosition(const Vertex3& position);
 	void SetRotation(const Vertex3& rotation);
+	void SetScale(const Vertex3& scale);
 
 private:
 	//Basic

@@ -67,6 +67,11 @@ void CGameObject::SetRotation(const Vertex3 & rotation)
 	this->mRotation = rotation;
 }
 
+void CGameObject::SetScale(const Vertex3 & scale)
+{
+	this->mScale = scale;
+}
+
 
 CGameObject::CGameObject()
 	:mPosition(0.0f, 0.0f, 0.0f), mRotation(0.0f, 0.0f, 0.0f), mScale(1.0f, 1.0f, 1.0f)

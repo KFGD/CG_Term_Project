@@ -11,13 +11,15 @@ bool CTexture::InitTexture()
 	glGenTextures(1, &mTexture);
 	//glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, mTexture);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	/*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, textureimg[0]->sizeX, textureimg[0]->sizeY, 0,
-			GL_RGB, GL_UNSIGNED_BYTE, textureimg[0]->data);
-	
+			GL_RGB, GL_UNSIGNED_BYTE, textureimg[0]->data);*/
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, textureimg[0]->sizeX, textureimg[0]->sizeY, GL_RGB,
+		GL_UNSIGNED_BYTE, textureimg[0]->data);
+
 	if (textureimg[0]) {
 		if (textureimg[0]->data) free(textureimg[0]->data);
 			free(textureimg[0]);

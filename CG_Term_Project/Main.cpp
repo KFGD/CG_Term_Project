@@ -20,17 +20,22 @@ void script() {
 	CSphereMesh sphereMesh(1.0f, 100, 100);
 	object.InitMesh(sphereMesh);
 	app.InitGameObject(object);
+}
 
+void initMap() {
+	CGameObject object;
 	CQuadMesh quadMesh;
-	object.SetPosition(Vertex3(2.0f, 2.0f, 0.0f));
-	object.InitMesh(quadMesh);
-	app.InitGameObject(object);
-
 	CTexture quadTexture("count_1.bmp");
-	object.SetPosition(Vertex3(4.0f, 4.0f, 0.0f));
-	object.SetRotation(Vertex3(-30.0f, 0.0f, 0.0f));
+	object.SetRotation(Vertex3(-35.0f, 0.0f, 0.0f));
+	object.SetScale(Vertex3(2.0f, 2.0f, 0.0f));
+	object.InitMesh(quadMesh);
 	object.InitTexture(quadTexture);
-	app.InitGameObject(object);
+	for (int i = -2.5; i < 2.5; ++i) {
+		for (int j = -2.5; j < 2.5; ++j) {
+			object.SetPosition(Vertex3(j * 2, i*2, 0.0f));
+			app.InitGameObject(object);
+		}
+	}
 }
 
 int main(int argc, char** argv) {
@@ -44,7 +49,8 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(reshape);
 
 	script();
-	
+	initMap();
+
 	glShadeModel(GL_SMOOTH);
 	glClearDepth(1.0f);
 	glEnable(GL_DEPTH_TEST);
