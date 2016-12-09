@@ -17,8 +17,9 @@ void CApplication::InitGameObject(const CGameObject& gameObject)
 {
 	//std::cout << "InputGameObject" << std::endl;
 
-	//CGameObject* copyObject = new CGameObject(gameObject);
-	mGameObjects.push_back(gameObject.Clone());
+	CGameObject* copyObject = gameObject.Clone();
+	copyObject->GenerateTexture();
+	mGameObjects.push_back(copyObject);
 }
 
 void CApplication::ClearScene()

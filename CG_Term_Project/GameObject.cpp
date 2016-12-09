@@ -4,7 +4,19 @@
 
 void CGameObject::InitMaterial(const CMaterial & material)
 {
+	if (mMaterial) delete mMaterial;
 	this->mMaterial = new CMaterial(material);
+}
+
+void CGameObject::InitTexture(const CTexture & texture)
+{
+	if (mTexture) delete mTexture;
+	this->mTexture = new CTexture(texture);
+}
+
+void CGameObject::GenerateTexture()
+{
+	if (mTexture) mTexture->InitTexture();
 }
 
 void CGameObject::SetMesh(BaseMesh * mesh)
@@ -29,10 +41,19 @@ void CGameObject::RenderObject()
 
 	//Material
 	if (mMaterial) mMaterial->GiveEffect();
-	glColor3f(0.0f, 1.0f, 0.0f);
+	
+	
+	if (mTexture) {
+		glEnable(GL_TEXTURE_2D);
+		mTexture->AttachTexture();	//BindTexture
+	}
+	else glColor3f(1.0f, 1.0f, 1.0f);
+	
 	//Mesh
 	if (mMesh) mMesh->AttachMesh();
 	
+	if (mTexture) glDisable(GL_TEXTURE_2D);
+
 	glPopMatrix();
 }
 
@@ -54,7 +75,7 @@ CGameObject::CGameObject()
 
 CGameObject::CGameObject(const CGameObject & copyObject)
 	:mPosition(copyObject.mPosition), mRotation(copyObject.mRotation), mScale(copyObject.mScale),
-	mMaterial(copyObject.mMaterial != nullptr ? copyObject.mMaterial->Clone() : nullptr), mMesh(copyObject.mMesh != nullptr ? copyObject.mMesh->Clone() : nullptr)
+	mMaterial(copyObject.mMaterial != nullptr ? copyObject.mMaterial->Clone() : nullptr), mMesh(copyObject.mMesh != nullptr ? copyObject.mMesh->Clone() : nullptr), mTexture(copyObject.mTexture != nullptr ? copyObject.mTexture->Clone() : nullptr)
 {
 	//std::cout << "GameObject 복사 생성자" << std::endl;
 }
@@ -63,9 +84,12 @@ CGameObject & CGameObject::operator=(const CGameObject & rhs)
 {
 	// TODO: 여기에 반환 구문을 삽입합니다.
 	
+	//Member Pointer Variable
 	this->mMaterial = rhs.mMaterial;
 	this->mMesh = rhs.mMesh;
+	this->mTexture = rhs.mTexture;
 
+	//Member Primitive Variable
 	this->mPosition = rhs.mPosition;
 	this->mRotation = rhs.mRotation;
 	this->mScale = rhs.mScale;
@@ -90,5 +114,9 @@ CGameObject::~CGameObject()
 	if (mMesh) {
 		delete mMesh;
 		mMesh = nullptr;
+	}
+	if (mTexture) {
+		delete mTexture;
+		mTexture = nullptr;
 	}
 }

@@ -3,7 +3,7 @@
 #include <typeinfo>
 #include "Material.h"
 #include "BaseMesh.h"
-
+#include "Texture.h"
 
 /*
 	Nameing Rule
@@ -17,6 +17,9 @@ public:
 	void InitMaterial(const CMaterial& material);
 	template <typename T, typename = typename std::enable_if<std::is_base_of<BaseMesh, T>::value, T>::type> 
 	void InitMesh(const T& mesh);
+	void InitTexture(const CTexture& texture);
+	void GenerateTexture();
+
 	void SetMesh(BaseMesh* mesh);
 	void RenderObject();
 	void SetPosition(const Vertex3& position);
@@ -33,6 +36,9 @@ private:
 
 	//Mesh
 	BaseMesh* mMesh = nullptr;
+
+	//Texture
+	CTexture* mTexture = nullptr;
 
 public:
 	CGameObject();

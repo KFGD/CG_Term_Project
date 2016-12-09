@@ -1,6 +1,16 @@
 #pragma once
 #include<gl\glut.h>
 #include<math.h>
+#include<iostream>
+#include<string>
+#include<Windows.h>
+#include<GLAUX.H>
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+
+struct Vertex {
+	float tu, tv;
+	float x, y, z;
+};
 
 struct Vertex3 {
 	GLfloat x, y, z;
@@ -23,3 +33,7 @@ enum GAMEOBJECT_TYPE {
 	QUAD,
 	SPHERE,
 };
+
+//Convet String to wString
+std::wstring s2ws(const std::string& s);
+AUX_RGBImageRec *LoadBMPFile(const char* filename);
