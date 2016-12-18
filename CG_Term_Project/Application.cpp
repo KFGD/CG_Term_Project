@@ -195,14 +195,13 @@ void CApplication::MovePlayer()
 		
 		Vertex3 tileColiderPos = currentTile->GetPosition();
 		tileColiderPos = tileColiderPos +tileColider->GetCenterPosOfCollider();
-		
-
 
 		if (tileColiderPos.x - 0.5f < nextPos.x && tileColiderPos.x + 0.5f > nextPos.x &&
 			tileColiderPos.y - 0.5f < nextPos.z && tileColiderPos.y + 0.5f > nextPos.z &&
 			nextPos.y <=0.1 && nextPos.y >=-0.1) {
 			nextPos = curPos;
-			userRigidbody.SetDirectionVectorOfRigidbody(Vertex3(userRigidbody.GetDirectionVectorOfRigidbody().x, mGravity*20, userRigidbody.GetDirectionVectorOfRigidbody().z));
+			userRigidbody.SetDirectionVectorOfRigidbody(Vertex3(userRigidbody.GetDirectionVectorOfRigidbody().x,
+				mGravity*20, userRigidbody.GetDirectionVectorOfRigidbody().z));
 			nextPos = nextPos + userRigidbody.GetDirectionVectorOfRigidbody();
 			if (0 == currentTile->GetTag().compare("TILE_TWO")) {
 				--currentTile->limitCount;
@@ -274,19 +273,15 @@ void CApplication::InputArrowKey(int key)
 	{
 	case GLUT_KEY_UP:
 		userRigidbody.AddDirectionVectorOfRigidbody(Vertex3(0.0f, 0.0f, -0.02f));
-		//userObject->AddPosition(Vertex3(0.0f, 0.0f, -0.1f));
 		break;
 	case GLUT_KEY_DOWN:
 		userRigidbody.AddDirectionVectorOfRigidbody(Vertex3(0.0f, 0.0f, +0.02f));
-		//userObject->AddPosition(Vertex3(0.0f, 0.0f, +0.1f));
 		break;
 	case GLUT_KEY_RIGHT:
 		userRigidbody.AddDirectionVectorOfRigidbody(Vertex3(+0.02f, 0.0f, 0.0f));
-		//userObject->AddPosition(Vertex3(+0.1f, 0.0f, 0.0f));
 		break;
 	case GLUT_KEY_LEFT:
 		userRigidbody.AddDirectionVectorOfRigidbody(Vertex3(-0.02f, 0.0f, 0.0f));
-		//userObject->AddPosition(Vertex3(-0.1f, 0.0f, 0.0f));
 		break;
 	default:
 		break;
