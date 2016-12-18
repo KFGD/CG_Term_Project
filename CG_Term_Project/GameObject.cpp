@@ -30,6 +30,16 @@ void CGameObject::SetMesh(BaseMesh * mesh)
 	this->mMesh = mesh;
 }
 
+BaseCollider * CGameObject::GetCollider()
+{
+	return this->mCollider;
+}
+
+CRigidbody * CGameObject::GetRigidbody()
+{
+	return this->mRigidbody;
+}
+
 void CGameObject::RenderObject()
 {
 	glPushMatrix();
@@ -46,20 +56,19 @@ void CGameObject::RenderObject()
 	glScalef(mScale.x, mScale.y, mScale.z);
 
 	//Material
-	if (mMaterial) mMaterial->GiveEffect();
+	if (mMaterial) 
+		mMaterial->GiveEffect();
 	
 	
 	if (mTexture) {
 		glEnable(GL_TEXTURE_2D);
 		mTexture->AttachTexture();	//BindTexture
 	}
-	else glColor3f(1.0f, 1.0f, 1.0f);
-	
 	//Mesh
 	if (mMesh) mMesh->AttachMesh();
 	
 	if (mTexture) glDisable(GL_TEXTURE_2D);
-
+	
 	glPopMatrix();
 }
 
@@ -68,9 +77,21 @@ void CGameObject::SetTag(const std::string & tag)
 	this->mTag = tag;
 }
 
+const std::string & CGameObject::GetTag()
+{
+	// TODO: 여기에 반환 구문을 삽입합니다.
+	return this->mTag;
+}
+
 void CGameObject::SetPosition(const Vertex3 & position)
 {
 	this->mPosition = position;
+}
+
+const Vertex3 & CGameObject::GetPosition()
+{
+	// TODO: 여기에 반환 구문을 삽입합니다.
+	return this->mPosition;
 }
 
 void CGameObject::SetRotation(const Vertex3 & rotation)
@@ -81,6 +102,11 @@ void CGameObject::SetRotation(const Vertex3 & rotation)
 void CGameObject::SetScale(const Vertex3 & scale)
 {
 	this->mScale = scale;
+}
+
+void CGameObject::AddPosition(const Vertex3 & addVertex3)
+{
+	this->mPosition = this->mPosition + addVertex3;
 }
 
 

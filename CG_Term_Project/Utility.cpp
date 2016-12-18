@@ -26,3 +26,15 @@ AUX_RGBImageRec *LoadBMPFile(const char* filename)
 	}
 	return NULL;
 }
+
+Vertex3 Normalize(const Vertex3 & vector)
+{
+	float size = sqrtf((powf(vector.x, 2) + powf(vector.y, 2) + powf(vector.z, 2)));
+	Vertex3 result(vector.x / size, vector.y / size, vector.z / size);
+	return result;
+}
+
+GLfloat DotProduct(const Vertex3 & vectorOne, const Vertex3 & vectorTwo)
+{
+	return vectorOne.x*vectorTwo.x + vectorOne.y*vectorTwo.y + vectorOne.z*vectorTwo.z;
+}

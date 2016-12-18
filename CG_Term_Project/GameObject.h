@@ -26,14 +26,17 @@ public:
 	void GenerateTexture();
 
 	void SetMesh(BaseMesh* mesh);
-	template <typename T, typename = typename std::enable_if<std::is_base_of<BaseCollider, T>::value, T>::type>
-	T GetCollider();
+	BaseCollider* GetCollider();
+	CRigidbody* GetRigidbody();
 
 	void RenderObject();
 	void SetTag(const std::string& tag);
+	const std::string& GetTag();
 	void SetPosition(const Vertex3& position);
+	const Vertex3& GetPosition();
 	void SetRotation(const Vertex3& rotation);
 	void SetScale(const Vertex3& scale);
+	void AddPosition(const Vertex3& addVertex3);
 
 private:
 	//Basic
@@ -84,8 +87,3 @@ inline void CGameObject::InitCollider(const T & collider)
 	this->mCollider = new T(collider);
 }
 
-template <typename T, typename = typename std::enable_if<std::is_base_of<BaseCollider, T>::value, T>::type>
-inline T CGameObject::GetCollider()
-{
-	return this->mCollider;
-}

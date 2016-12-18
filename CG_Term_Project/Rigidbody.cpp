@@ -13,6 +13,13 @@ void CRigidbody::SetDirectionVectorOfRigidbody(const Vertex3 & directionVector)
 	this->mDirectionVector = directionVector;
 }
 
+void CRigidbody::AddDirectionVectorOfRigidbody(const Vertex3 & addDriectionVector)
+{
+	this->mDirectionVector.x += addDriectionVector.x;
+	this->mDirectionVector.y += addDriectionVector.y;
+	this->mDirectionVector.z += addDriectionVector.z;
+}
+
 CRigidbody::CRigidbody()
 {
 }

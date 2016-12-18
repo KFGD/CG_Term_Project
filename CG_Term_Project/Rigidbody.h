@@ -6,6 +6,7 @@ class CRigidbody
 public:
 	const Vertex3& GetDirectionVectorOfRigidbody();
 	void SetDirectionVectorOfRigidbody(const Vertex3& directionVector);
+	void AddDirectionVectorOfRigidbody(const Vertex3& addDriectionVector);
 
 private:
 	Vertex3 mDirectionVector;

@@ -18,6 +18,27 @@ struct Vertex3 {
 	Vertex3():x(0.0f),y(0.0f),z(0.0f) {}
 	Vertex3(GLfloat _x, GLfloat _y, GLfloat _z):x(_x),y(_y),z(_z){}
 	Vertex3(const Vertex3& vertex3):x(vertex3.x),y(vertex3.y),z(vertex3.z){}
+	const Vertex3& operator+(const Vertex3& rhs) {
+		this->x += rhs.x;
+		this->y += rhs.y;
+		this->z += rhs.z;
+
+		return *this;
+	}
+	const Vertex3& operator-(const Vertex3& rhs) {
+		this->x -= rhs.x;
+		this->y -= rhs.y;
+		this->z -= rhs.z;
+
+		return *this;
+	}
+	const Vertex3& operator=(const Vertex3& rhs) {
+		this->x = rhs.x;
+		this->y = rhs.y;
+		this->z = rhs.z;
+
+		return *this;
+	}
 };
 
 struct Vertex4 {
@@ -37,3 +58,7 @@ enum GAMEOBJECT_TYPE {
 //Convet String to wString
 std::wstring s2ws(const std::string& s);
 AUX_RGBImageRec *LoadBMPFile(const char* filename);
+
+//Dot Product
+Vertex3 Normalize(const Vertex3& vector);
+GLfloat DotProduct(const Vertex3& vectorOne, const Vertex3& vectorTwo);
