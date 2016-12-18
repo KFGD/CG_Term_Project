@@ -86,7 +86,8 @@ inline void CGameObject::InitMesh(const T & mesh)
 	//std::cout << "InitMesh 호출 완료" << std::endl;
 }
 
-template <typename T, typename = typename std::enable_if<std::is_base_of<BaseCollider, T>::value, T>::type>
+template <typename T, typename = typename 
+	std::enable_if<std::is_base_of<BaseCollider, T>::value, T>::type>
 inline void CGameObject::InitCollider(const T & collider)
 {
 	if (mCollider)

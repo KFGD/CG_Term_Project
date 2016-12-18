@@ -168,7 +168,8 @@ void CApplication::MovePlayer()
 		if (0 == currentObject->GetTag().compare("USER")) {
 			userObject = currentObject;
 		}
-		else if (0 == currentObject->GetTag().compare("TILE_NORMAL") || 0 == currentObject->GetTag().compare("TILE_TWO")) {
+		else if (0 == currentObject->GetTag().compare("TILE_NORMAL") ||
+			0 == currentObject->GetTag().compare("TILE_TWO")) {
 			tileObject.push_back(currentObject);
 		}
 		else if (0 == currentObject->GetTag().compare("GOAL")) {
@@ -268,7 +269,8 @@ void CApplication::InputArrowKey(int key)
 		}
 	}
 	CRigidbody& userRigidbody = *(userObject->GetRigidbody());
-	userRigidbody.SetDirectionVectorOfRigidbody(Vertex3(0.0f, userRigidbody.GetDirectionVectorOfRigidbody().y, 0.0f));
+	userRigidbody.SetDirectionVectorOfRigidbody(Vertex3(0.0f, 
+		userRigidbody.GetDirectionVectorOfRigidbody().y, 0.0f));
 	switch (key)
 	{
 	case GLUT_KEY_UP:

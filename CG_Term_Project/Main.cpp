@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
 	glFrontFace(GL_CCW);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_LIGHTING);
+	glEnable(GL_BLEND);
 
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
