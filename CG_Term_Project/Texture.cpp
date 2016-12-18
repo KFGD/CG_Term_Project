@@ -9,12 +9,7 @@ bool CTexture::InitTexture()
 
 	textureimg[0] = LoadBMPFile(mFileName.c_str());
 	glGenTextures(1, &mTexture);
-	//glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, mTexture);
-	/*glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, textureimg[0]->sizeX, textureimg[0]->sizeY, 0,
-			GL_RGB, GL_UNSIGNED_BYTE, textureimg[0]->data);*/
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, textureimg[0]->sizeX, textureimg[0]->sizeY, GL_RGB,
@@ -27,7 +22,6 @@ bool CTexture::InitTexture()
 	else return FALSE;
 	
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	//glDisable(GL_TEXTURE_2D);
 	return TRUE;
 }
 

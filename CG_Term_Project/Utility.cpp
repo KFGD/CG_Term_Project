@@ -22,7 +22,6 @@ AUX_RGBImageRec *LoadBMPFile(const char* filename)
 	if (pFile) {
 		fclose(pFile);
 		std::wstring temp = s2ws(filename);
-		printf("%s\n", filename);
 		return auxDIBImageLoad(temp.c_str());
 	}
 	return NULL;

@@ -51,6 +51,15 @@
     <ClInclude Include="BaseScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SphereCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -87,6 +96,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="BaseScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

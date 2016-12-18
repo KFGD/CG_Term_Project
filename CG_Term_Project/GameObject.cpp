@@ -14,6 +14,12 @@ void CGameObject::InitTexture(const CTexture & texture)
 	this->mTexture = new CTexture(texture);
 }
 
+void CGameObject::InitRigidbody(const CRigidbody & rigidbody)
+{
+	if (mRigidbody) delete mRigidbody;
+	this->mRigidbody = new CRigidbody(rigidbody);
+}
+
 void CGameObject::GenerateTexture()
 {
 	if (mTexture) mTexture->InitTexture();
@@ -57,6 +63,11 @@ void CGameObject::RenderObject()
 	glPopMatrix();
 }
 
+void CGameObject::SetTag(const std::string & tag)
+{
+	this->mTag = tag;
+}
+
 void CGameObject::SetPosition(const Vertex3 & position)
 {
 	this->mPosition = position;
@@ -79,8 +90,10 @@ CGameObject::CGameObject()
 }
 
 CGameObject::CGameObject(const CGameObject & copyObject)
-	:mPosition(copyObject.mPosition), mRotation(copyObject.mRotation), mScale(copyObject.mScale),
-	mMaterial(copyObject.mMaterial != nullptr ? copyObject.mMaterial->Clone() : nullptr), mMesh(copyObject.mMesh != nullptr ? copyObject.mMesh->Clone() : nullptr), mTexture(copyObject.mTexture != nullptr ? copyObject.mTexture->Clone() : nullptr)
+	:mTag(copyObject.mTag), mPosition(copyObject.mPosition), mRotation(copyObject.mRotation), mScale(copyObject.mScale),
+	mMaterial(copyObject.mMaterial != nullptr ? copyObject.mMaterial->Clone() : nullptr), mMesh(copyObject.mMesh != nullptr ? copyObject.mMesh->Clone() : nullptr),
+	mTexture(copyObject.mTexture != nullptr ? copyObject.mTexture->Clone() : nullptr), mCollider(copyObject.mCollider != nullptr ? copyObject.mCollider->Clone() : nullptr),
+	mRigidbody(copyObject.mRigidbody != nullptr ? copyObject.mRigidbody->Clone() : nullptr)
 {
 	//std::cout << "GameObject 복사 생성자" << std::endl;
 }
@@ -93,8 +106,11 @@ CGameObject & CGameObject::operator=(const CGameObject & rhs)
 	this->mMaterial = rhs.mMaterial;
 	this->mMesh = rhs.mMesh;
 	this->mTexture = rhs.mTexture;
+	this->mCollider = rhs.mCollider;
+	this->mRigidbody = rhs.mRigidbody;
 
 	//Member Primitive Variable
+	this->mTag = rhs.mTag;
 	this->mPosition = rhs.mPosition;
 	this->mRotation = rhs.mRotation;
 	this->mScale = rhs.mScale;
@@ -123,5 +139,13 @@ CGameObject::~CGameObject()
 	if (mTexture) {
 		delete mTexture;
 		mTexture = nullptr;
+	}
+	if (mCollider) {
+		delete mCollider;
+		mCollider = nullptr;
+	}
+	if (mRigidbody) {
+		delete mRigidbody;
+		mRigidbody = nullptr;
 	}
 }

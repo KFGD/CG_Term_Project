@@ -3,6 +3,8 @@
 #include "GameObject.h"
 #include "QuadMesh.h"
 #include "SphereMesh.h"
+#include "QuadCollider.h"
+#include "SphereCollider.h"
 
 class CApplication
 {
@@ -17,11 +19,10 @@ private:
 	//BaseScene
 	void InitScene();
 	void InitMap();
-	void InitGameObjects();
+	void InitUserObject();
 	
 	//Not BaseScene
 	void PutGameObject(const CGameObject& gameObject);
-
 
 private:
 	//BaseScene
@@ -34,6 +35,7 @@ private:
 	void ClearScene();
 
 public:
+	void MovePlayer();
 	void RenderScene();
 	void Reshape(int w, int h);
 	
