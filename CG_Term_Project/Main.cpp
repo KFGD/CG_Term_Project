@@ -11,8 +11,10 @@ void display() {
 }
 
 void idleFunc() {
-	app.MovePlayer();
-	glutPostRedisplay();
+	if (!app.isClear && !app.isGameOver) {
+		app.MovePlayer();
+		glutPostRedisplay();
+	}
 }
 
 void specialFunc(int key, int x, int y) {
@@ -44,19 +46,6 @@ int main(int argc, char** argv) {
 
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	// Really Nice Perspective Calculations
-
-	//GLfloat whiteLight[4] = { 0.3,0.3, 0.3, 0.33 };
-	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, whiteLight);
-
-	//GLfloat material_ambient[] = { 0.4,0.4,0.4,1.0 };
-	//GLfloat material_diffuse[] = { 0.9,0.9,0.9,1.0 };
-	//GLfloat material_specular[] = { 1.0,1.0,1.0,1.0 };
-	//GLfloat material_shininess[] = { 25.0 };
-
-	//glMaterialfv(GL_FRONT, GL_DIFFUSE, material_diffuse);
-	//glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular);
-	//glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess);
 
 	app.InitObjects();
 

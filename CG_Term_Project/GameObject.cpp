@@ -8,10 +8,28 @@ void CGameObject::InitMaterial(const CMaterial & material)
 	this->mMaterial = new CMaterial(material);
 }
 
+void CGameObject::DeleteMesh()
+{
+	if (mMesh) delete mMesh;
+	mMesh = nullptr;
+}
+
 void CGameObject::InitTexture(const CTexture & texture)
 {
 	if (mTexture) delete mTexture;
 	this->mTexture = new CTexture(texture);
+}
+
+void CGameObject::DeleteTexture()
+{
+	if (mTexture) delete mTexture;
+	mTexture = nullptr;
+}
+
+void CGameObject::DeleteCollider()
+{
+	if (mCollider) delete mCollider;
+	mCollider = nullptr;
 }
 
 void CGameObject::InitRigidbody(const CRigidbody & rigidbody)
@@ -116,7 +134,7 @@ CGameObject::CGameObject()
 }
 
 CGameObject::CGameObject(const CGameObject & copyObject)
-	:mTag(copyObject.mTag), mPosition(copyObject.mPosition), mRotation(copyObject.mRotation), mScale(copyObject.mScale),
+	:mTag(copyObject.mTag), mPosition(copyObject.mPosition), mRotation(copyObject.mRotation), mScale(copyObject.mScale), limitCount(copyObject.limitCount),
 	mMaterial(copyObject.mMaterial != nullptr ? copyObject.mMaterial->Clone() : nullptr), mMesh(copyObject.mMesh != nullptr ? copyObject.mMesh->Clone() : nullptr),
 	mTexture(copyObject.mTexture != nullptr ? copyObject.mTexture->Clone() : nullptr), mCollider(copyObject.mCollider != nullptr ? copyObject.mCollider->Clone() : nullptr),
 	mRigidbody(copyObject.mRigidbody != nullptr ? copyObject.mRigidbody->Clone() : nullptr)
@@ -140,6 +158,9 @@ CGameObject & CGameObject::operator=(const CGameObject & rhs)
 	this->mPosition = rhs.mPosition;
 	this->mRotation = rhs.mRotation;
 	this->mScale = rhs.mScale;
+
+	//Rule
+	this->limitCount = rhs.limitCount;
 
 	//std::cout << "GameObject 대입 연산자" << std::endl;
 	return *this;

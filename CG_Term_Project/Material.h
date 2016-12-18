@@ -7,9 +7,9 @@ class CMaterial
 public:
 	void GiveEffect();
 	void SetAmbient(const Vertex4& ambient);
-	void SetDiffuse(const Vertex4& diffuse);
-	void SetSpecular(const Vertex4& specular);
-	void SetEmission(const Vertex4& Emission);
+	void SetDiffuse(const Vertex4& ambient);
+	void SetSpecular(const Vertex4& ambient);
+	void SetEmission(const Vertex4& ambient);
 	void SetShiness(const GLfloat shiness);
 	
 private:

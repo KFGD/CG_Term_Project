@@ -2,6 +2,11 @@
 
 
 
+void CTexture::SetFileName(const std::string & fileName)
+{
+	this->mFileName = fileName;
+}
+
 bool CTexture::InitTexture()
 {
 	AUX_RGBImageRec *textureimg[1];
@@ -21,7 +26,8 @@ bool CTexture::InitTexture()
 	}
 	else return FALSE;
 	
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	return TRUE;
 }
 

@@ -4,11 +4,16 @@
 
 void CMaterial::GiveEffect()
 {
-	float* temp = mAmbient.ToArray();
-	glMaterialfv(GL_FRONT, GL_AMBIENT, temp);
-	//glMaterialfv(GL_FRONT, GL_DIFFUSE, temp);
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, mSpecular.ToArray());
-	//glMaterialfv(GL_FRONT, GL_SHININESS, &mShiness);
+	GLfloat ambinet[4] = { mAmbient.x, mAmbient.y, mAmbient.z, mAmbient.w };
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ambinet);
+	
+	GLfloat diffuse[4] = { mDiffuse.x, mDiffuse.y, mDiffuse.z, mDiffuse.w };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+	
+	GLfloat specular[4] = { mSpecular.x, mSpecular.y, mSpecular.z, mSpecular.w };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+	
+	glMaterialfv(GL_FRONT, GL_SHININESS, &mShiness);
 }
 
 void CMaterial::SetAmbient(const Vertex4 & ambient)

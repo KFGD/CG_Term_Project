@@ -19,9 +19,12 @@ public:
 	void InitMaterial(const CMaterial& material);
 	template <typename T, typename = typename std::enable_if<std::is_base_of<BaseMesh, T>::value, T>::type> 
 	void InitMesh(const T& mesh);
+	void DeleteMesh();
 	void InitTexture(const CTexture& texture);
+	void DeleteTexture();
 	template <typename T, typename = typename std::enable_if<std::is_base_of<BaseCollider, T>::value, T>::type>
 	void InitCollider(const T& collider);
+	void DeleteCollider();
 	void InitRigidbody(const CRigidbody& rigidbody);
 	void GenerateTexture();
 
@@ -59,6 +62,10 @@ private:
 	
 	//Rigidbody
 	CRigidbody* mRigidbody = nullptr;
+
+	//Rule
+public:
+	int limitCount = -1;
 
 public:
 	CGameObject();

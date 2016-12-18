@@ -8,6 +8,7 @@ private:
 	GLuint mTexture;	//copyConstructor can't copy mTexture;
 
 public:
+	void SetFileName(const std::string& fileName);
 	bool InitTexture();
 	void AttachTexture();
 
